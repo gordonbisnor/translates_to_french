@@ -1,0 +1,16 @@
+A quick and dirty plugin for Rails 2.2 English sites that need to provide ActiveRecord translations to French. Highly limited and inflexible, but seems to serve my very limited needs at the moment: a single-user CMS content site managed by an English-speaking person. French translations show on the front end if available, and default to English otherwise.
+
+I based it on this post and plugin:
+http://iain.nl/2008/09/acts_as_translatable_model-plugin/
+
+Usage:
+
+If the locale is set to 'fr' it will look for a column with the suffix '_fr'. If there's content available in that column, it will use it, otherwise it will just show the English. 
+
+class MyModel < ActiveRecord::Base
+	translates_to_french :title, :content
+end
+
+I setup an Admin area controller and in there I have a before_filter that resets the locale back to English. 
+
+In the forms I provide a field for both the English and French content items.
