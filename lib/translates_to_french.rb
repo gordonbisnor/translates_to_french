@@ -40,7 +40,7 @@ module TranslatesToFrench
       end
 
       def column_name_translated(name)
-        if I18n.locale == 'fr'
+        if I18n.locale == :fr || I18n.locale == "fr"
           column_name = "#{name}_fr"
         end
         self.class.column_names.include?(column_name) ? column_name.to_sym : "#{name}".to_sym
